@@ -60,3 +60,9 @@ a:hover
 {
     margin-top: 10px;
 }
+
+code
+{
+    font-family: Courier;
+    color: #222;
+}
