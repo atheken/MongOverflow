@@ -129,7 +129,7 @@ namespace DataLoader
 
         private void FlushQuestions(bool finalize)
         {
-            if (this._questionQueue.Count >= 1000 || finalize)
+            if (this._questionQueue.Count >= 1000 || (finalize && this._questionQueue.Any()))
             {
                 using (var db = Mongo.Create(this._connStringName))
                 {
@@ -157,7 +157,7 @@ namespace DataLoader
 
         private void FlushAnswers(bool finalize)
         {
-            if (this._answerQueue.Count >= 1000 || finalize)
+            if (this._answerQueue.Count >= 1000 || (finalize && this._answerQueue.Any()))
             {
                 using (var db = Mongo.Create(this._connStringName))
                 {

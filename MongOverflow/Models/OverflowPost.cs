@@ -18,7 +18,7 @@ namespace MongOverflow.Models
         public DateTime CreationDate { get; set; }
 
         /// <summary>
-        /// Creation Moment.
+        /// Last time somebody touched this post.
         /// </summary>
         public DateTime? LastEditDate { get; set; }
 

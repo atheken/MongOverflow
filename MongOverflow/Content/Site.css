@@ -1,35 +1,62 @@
-﻿*
+﻿body, html
 {
+    height: 100%;
+    width: 100%;
     margin: 0px;
     padding: 0px;
     font-family: Arial;
     font-size: 12px; /*sets the root size of 1.0em to 12px.*/
 }
 
-html,body
+html, body
 {
-    background: gray;
+    background: #FFFFF7;
+    color: #453625;
+}
+a, a:hover, a:visited, a:hover
+{
+    color: #E82B1E;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline overline;
 }
 
 .question
 {
-    border: 1px solid gray;
-    font-family: Courier;
+    
+    border: 1px solid #453625;
     margin: 0px 30px 10px 30px;
     padding: 5px;
-    background: beige;
+    background: #E5DEAF;
 }
 
 .questionHeader
 {
-    background: green;
-    border: 1px solid black;
+    border: 1px solid #557A66;
     padding: 3px;
     font-weight: bold;
     font-size: 1.2em;
+    background-color: #A0B688;
+    color: #003500;
 }
 
 .questionBody
 {
     margin: 10px;
+}
+
+.header
+{
+    height: 50px;
+    background: #003500;
+    border-bottom: 1px solid #A0B688;
+    color: #A0B688;
+    width: 100%;
+}
+
+.contentBody
+{
+    margin-top: 10px;
 }
