@@ -8,7 +8,10 @@
        { %>
     <div class="question">
         <div class="questionHeader">
-            <%= Html.Encode(item.Title) %>&nbsp;&nbsp;<%=Html.ActionLink("View", "View", new { id = item._id }) %>
+            <li class="questionScore score"><span style="font-size: .2em">Score: </span>
+                <%= Html.Encode(item.Score) %></li>
+            <%= Html.Encode(item.Title) %>
+            <%=Html.ActionLink("View", "View", new { id = item._id }) %>
         </div>
         <div class="questionBody">
             <%=item.PostBody %></div>
@@ -17,10 +20,7 @@
             Answers:
             <%=item.Answers.Count %>&nbsp;&nbsp;&nbsp;&nbsp; Created:
             <%= Html.Encode(String.Format("{0:g}", item.CreationDate)) %>&nbsp;&nbsp;&nbsp;&nbsp;
-            Last Edit:
-            <%= Html.Encode(String.Format("{0:g}", item.LastEditDate)) %>&nbsp;&nbsp;&nbsp;&nbsp;
-            Score:
-            <%= Html.Encode(item.Score) %>&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= item.LastEditDate.HasValue ? Html.Encode(String.Format("Last Edit: {0:g}", item.LastEditDate)) : "" %>
         </div>
     </div>
     <% } %>

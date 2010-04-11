@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\check.png" />
     <Content Include="Content\jquery142.js" />
     <Content Include="Global.asax" />
     <Content Include="Views\Questions\Index.aspx" />

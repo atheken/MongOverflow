@@ -8,35 +8,36 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="question">
         <div class="questionHeader">
+            <li class="questionScore score"><span style="font-size: .2em">Score: </span>
+                <%= Html.Encode(Model.Score) %></li>
             <%= Html.Encode(Model.Title) %></div>
-        Created:
-        <%= Html.Encode(String.Format("{0:g}", Model.CreationDate)) %><br />
-        Edited:
-        <%= Html.Encode(String.Format("{0:g}", Model.LastEditDate)) %><br />
-        Score:
-        <%= Html.Encode(Model.Score) %><br />
-        <br />
         <div class="questionBody">
             <%= Model.PostBody %>
-            <hr />
-            Answers:<%if (!Model.Answers.Any()) { Response.Write("<br/><br/>No Answers Yet..."); }
-                      else
-                      {%>
-            <%foreach (var a in Model.Answers)
-              { %>
-            <div class="answer">
-                <div class="answerHeader">
-                    <span class="score">
-                        <%=a.Score%></span>  <%=Model.AcceptedAnswerId == a._id ? "ACCEPTED" : "" %>
-                    Answered @
-                    <%=String.Format("{0:g}",a.CreationDate) %>
-                </div>
-                <div class="answerBody">
-                    <%=a.PostBody %>
-                </div>
-            </div>
-            <%}
-                      }%>
+            <br />
+            <br />
+            Created:
+            <%= Html.Encode(String.Format("{0:g}", Model.CreationDate)) %><br />
+            <%=Model.LastEditDate.HasValue ? Html.Encode(String.Format("Edited: {0:g}", Model.LastEditDate)) : ""%><br />
         </div>
+        <hr />
+        <%if (!Model.Answers.Any()) { Response.Write("<br/><br/>No Answers Yet..."); }
+          else
+          {%>
+        <%foreach (var a in Model.Answers)
+          { %>
+        <div class="answer">
+            <div class="answerHeader">
+                <li class="answerScore score"><span style="font-size: .5em">Score: </span>
+                    <%=a.Score%></li>
+                Answered @
+                <%=String.Format("{0:g}",a.CreationDate) %><span style="float: right; padding:5px;"><%=Model.AcceptedAnswerId == a._id ? "<img src='"+this.ResolveUrl("~/Content/check.png")+"'/>" : "" %></span>
+            </div>
+            <div class="answerBody">
+                <%=a.PostBody %>
+            </div>
+        </div>
+        <%}
+          }%>
+    </div>
     </div>
 </asp:Content>

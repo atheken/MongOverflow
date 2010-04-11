@@ -31,12 +31,12 @@ hr
 
 .question
 {
-    
     border: 1px solid #453625;
     margin: 0px 30px 10px 30px;
     padding: 5px;
     background: #E5DEAF;
 }
+
 
 .questionHeader
 {
@@ -75,12 +75,33 @@ code
 
 .score
 {
+    list-style-type : none;
+    clear: none;
+    display: inline;
+    font-size: 3em;
+    text-align: center;
+    padding: .1em;
+    width: 50px;
+}
+.questionScore
+{
+    background: #003500;
+    color: #A0B688;
+}
+
+.answerScore
+{
     font-size: 2em;
+    background: #A0B688;
+    color: #003500;
 }
 
 .answer
 {
-    background: white;
+    background: #FFFFF7;
+    border: 1px solid gray;
+    padding: 3px;
+    margin-bottom: 5px;
 }
 .answerBody
 {
@@ -88,5 +109,6 @@ code
 }
 .answerHeader
 {
-    border: 1px solid gray;
+    background: #003500;
+    color: #FFFFF7;
 }

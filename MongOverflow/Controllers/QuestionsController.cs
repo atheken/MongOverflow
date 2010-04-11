@@ -19,8 +19,9 @@ namespace MongOverflow.Controllers
             var posts = Enumerable.Empty<OverflowQuestion>();
             using (var db = Mongo.Create(this._connStringName))
             {
-                var query = new { AcceptedAnswerId = Q.NotEqual(new int?()) };
-                posts = db.GetCollection<OverflowQuestion>().Find(query, new {CreationDate = -1}, 10, 0).ToList();
+                var query = new { AcceptedAnswerId = Q.IsNotNull() };
+                posts = db.GetCollection<OverflowQuestion>().Find(query, new {CreationDate = OrderBy.Descending}, 10, 0).ToArray();
+                var allHaveAnswer = posts.All(y => y.AcceptedAnswerId != null);
             }
             return View(posts);
         }
