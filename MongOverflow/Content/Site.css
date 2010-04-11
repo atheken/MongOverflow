@@ -23,6 +23,12 @@ a:hover
     text-decoration: underline overline;
 }
 
+hr
+{
+    border: collapse;
+    border: 1px solid brown;
+}
+
 .question
 {
     
@@ -65,4 +71,22 @@ code
 {
     font-family: Courier;
     color: #222;
+}
+
+.score
+{
+    font-size: 2em;
+}
+
+.answer
+{
+    background: white;
+}
+.answerBody
+{
+    font-size: .9em;
+}
+.answerHeader
+{
+    border: 1px solid gray;
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Norm;
 using MongOverflow.Models;
+using Norm.Protocol.SystemMessages;
 
 namespace MongOverflow.Controllers
 {
@@ -18,8 +19,9 @@ namespace MongOverflow.Controllers
             var posts = Enumerable.Empty<OverflowQuestion>();
             using (var db = Mongo.Create(this._connStringName))
             {
-                posts = db.GetCollection<OverflowQuestion>().Find(new { AcceptedAnswerId = new int?() },
-                    new { CreationDate = -1 }, 10, 0).ToList();
+                //db.Database.SetProfileLevel(ProfileLevel.AllOperations);
+                var query = new { AcceptedAnswerId = Q.NotEqual(new int?()) };
+                posts = db.GetCollection<OverflowQuestion>().Find(query, new {CreationDate = -1}, 10, 0).ToList();
             }
             return View(posts);
         }

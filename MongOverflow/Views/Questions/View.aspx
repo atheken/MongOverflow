@@ -14,8 +14,29 @@
         Edited:
         <%= Html.Encode(String.Format("{0:g}", Model.LastEditDate)) %><br />
         Score:
-        <%= Html.Encode(Model.Score) %><br /><br />
+        <%= Html.Encode(Model.Score) %><br />
+        <br />
         <div class="questionBody">
-            <%= Model.PostBody %></div>
+            <%= Model.PostBody %>
+            <hr />
+            Answers:<%if (!Model.Answers.Any()) { Response.Write("<br/><br/>No Answers Yet..."); }
+                      else
+                      {%>
+            <%foreach (var a in Model.Answers)
+              { %>
+            <div class="answer">
+                <div class="answerHeader">
+                    <span class="score">
+                        <%=a.Score%></span>  <%=Model.AcceptedAnswerId == a._id ? "ACCEPTED" : "" %>
+                    Answered @
+                    <%=String.Format("{0:g}",a.CreationDate) %>
+                </div>
+                <div class="answerBody">
+                    <%=a.PostBody %>
+                </div>
+            </div>
+            <%}
+                      }%>
+        </div>
     </div>
 </asp:Content>
