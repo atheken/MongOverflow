@@ -15,15 +15,23 @@ namespace MongOverflow.Controllers
 
         public ActionResult Index()
         {
-            var posts = new List<OverflowQuestion>();
+            var posts = Enumerable.Empty<OverflowQuestion>();
             using (var db = Mongo.Create(this._connStringName))
             {
-                
                 posts = db.GetCollection<OverflowQuestion>().Find(new { AcceptedAnswerId = new int?() },
                     new { CreationDate = -1 }, 10, 0).ToList();
             }
-
             return View(posts);
+        }
+
+        public ActionResult View(int id)
+        {
+            OverflowQuestion currentPost = null;
+            using (var db = Mongo.Create(this._connStringName))
+            {
+                currentPost = db.GetCollection<OverflowQuestion>().FindOne(new { _id = id });
+            }
+            return this.View(currentPost);
         }
     }
 }

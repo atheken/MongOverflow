@@ -8,15 +8,19 @@
        { %>
     <div class="question">
         <div class="questionHeader">
-            <%= Html.Encode(item.Title) %>
+            <%= Html.Encode(item.Title) %>&nbsp;&nbsp;<%=Html.ActionLink("View", "View", new { id = item._id }) %>
         </div>
         <div class="questionBody">
             <%=item.PostBody %></div>
+        <hr />
         <div>
-            Answers: <%=item.Answers.Count %>&nbsp;&nbsp;&nbsp;&nbsp;
-            Created: <%= Html.Encode(String.Format("{0:g}", item.CreationDate)) %>&nbsp;&nbsp;&nbsp;&nbsp;
-            Last Edit: <%= Html.Encode(String.Format("{0:g}", item.LastEditDate)) %>&nbsp;&nbsp;&nbsp;&nbsp;
-            Score: <%= Html.Encode(item.Score) %>&nbsp;&nbsp;&nbsp;&nbsp;
+            Answers:
+            <%=item.Answers.Count %>&nbsp;&nbsp;&nbsp;&nbsp; Created:
+            <%= Html.Encode(String.Format("{0:g}", item.CreationDate)) %>&nbsp;&nbsp;&nbsp;&nbsp;
+            Last Edit:
+            <%= Html.Encode(String.Format("{0:g}", item.LastEditDate)) %>&nbsp;&nbsp;&nbsp;&nbsp;
+            Score:
+            <%= Html.Encode(item.Score) %>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <% } %>
